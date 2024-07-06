@@ -33,7 +33,7 @@ def classify_house(floor_count: int) -> str:
     "Многоэтажный".
     """
     bot, mid, top = 1, 5, 16
-    if type(floor_count) is not int:
+    if not isinstance(floor_count, int):
         msg = "Необходимо ввести целое число"
         raise TypeError(msg)
     if floor_count <= 0:
@@ -42,9 +42,10 @@ def classify_house(floor_count: int) -> str:
 
     if bot <= floor_count <= mid:
         return "Малоэтажный"
-    if mid < floor_count <= top:
+    elif mid < floor_count <= top:
         return "Среднеэтажный"
-    return "Многоэтажный"
+    else:
+        return "Многоэтажный"
 
 
 def get_classify_houses(houses: list[dict]) -> list[str]:
